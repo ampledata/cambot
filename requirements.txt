@@ -1,0 +1,13 @@
+# requirements.txt for Cambot.
+# Contains non-essential modules, such as those for linting & syntax checking.
+
+flake8
+pylint
+
+
+git+ssh://git@github.com/onbeep/oblib.git@master#egg=oblib
+git+ssh://git@github.com/onbeep/obsutil.git@master#egg=obsutil
+git+ssh://git@github.com/onbeep/obtransport_crypto.git@master#egg=obtransport_crypto
+git+ssh://git@github.com/onbeep/opusutil.git@master#egg=opusutil
+git+ssh://git@github.com/onbeep/botlib.git@master#egg=botlib
+git+ssh://git@github.com/onbeep/voicelib.git@master#egg=voicelib
