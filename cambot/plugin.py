@@ -39,9 +39,9 @@ def list_cameras(message):
 def show_door(message, door_name=None):
     camera_id = None
     if door_name is not None:
-        if 'front' in door_name:
+        if 'front' in door_name.lower():
             camera_id = cambot.constants.FRONT_DOOR_ID
-        elif 'back' in door_name:
+        elif 'back' in door_name.lower():
             camera_id = cambot.constants.BACK_DOOR_ID
         url = cambot.get_snapshot_s3_url(camera_id)
         if url is not None:
@@ -59,6 +59,7 @@ def show_camera(message, camera_id):
         cameras = cambot.get_cameras()
         for camera in cameras['data']:
             camera_id = camera['_id']
+            show_camera()
             url = cambot.get_snapshot_s3_url(camera_id)
             if url is not None:
                 attachments = [{
