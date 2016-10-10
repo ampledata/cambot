@@ -13,7 +13,7 @@ import setuptools
 
 setuptools.setup(
     name='cambot',
-    version='0.0.1b1',
+    version='0.0.1b2',
     description='Cambot - Camera bot.',
     license='All rights reserved. Do not redistribute.',
     author='Greg Albrecht',
