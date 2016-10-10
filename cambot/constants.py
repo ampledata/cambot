@@ -12,5 +12,5 @@ __license__ = 'All rights reserved. Do not redistribute.'
 
 NVR_URL = os.environ.get('NVR_URL', 'NVR_URL')
 API_KEY = os.environ.get('API_KEY', 'API_KEY')
-FRONT_DOOR_ID = os.environ.get('FRONT_DOOR_ID', '577a9a5fe4b05e0574376016')
+FRONT_DOOR_ID = os.environ.get('FRONT_DOOR_ID', '57e935c0e4b05e057590f4df')
 BACK_DOOR_ID = os.environ.get('BACK_DOOR_ID', '577aa653e4b05e0574376cac')

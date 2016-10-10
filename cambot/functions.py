@@ -76,10 +76,10 @@ def get_snapshot_s3_url(camera_id):
         tmp_fd, output_file = tempfile.mkstemp(prefix=prefix, suffix='.jpg')
         os.close(tmp_fd)
 
-    with open(output_file, 'w') as ofd:
-        ofd.write(snap)
+        with open(output_file, 'w') as ofd:
+            ofd.write(snap)
 
-    return botlib.upload_to_s3(output_file)
+        return botlib.upload_to_s3(output_file)
 
 
 def get_cameras():
