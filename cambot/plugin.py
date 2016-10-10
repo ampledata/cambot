@@ -59,7 +59,6 @@ def show_camera(message, camera_id):
         cameras = cambot.get_cameras()
         for camera in cameras['data']:
             camera_id = camera['_id']
-            show_camera()
             url = cambot.get_snapshot_s3_url(camera_id)
             if url is not None:
                 attachments = [{
