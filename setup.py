@@ -8,8 +8,8 @@ Source:: https://github.com/ampledata/cambot
 """
 
 import os
-import setuptools
 import sys
+import setuptools
 
 __title__ = 'cambot'
 __version__ = '0.0.2b2'

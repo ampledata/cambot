@@ -3,29 +3,26 @@
 
 """Cambot Plugin."""
 
+import os
+import re
+import tempfile
+
+import slackbot
+import uvsnap
+
+import cambot
+
 __author__ = 'Greg Albrecht <oss@undef.net>'
 __copyright__ = 'Copyright 2017 Greg Albrecht'
 __license__ = 'Apache License, Version 2.0'
 
 
-import json
-import os
-import re
-import tempfile
-
-from slackbot.bot import respond_to, listen_to, default_reply
-
-import uvsnap
-
-import cambot
-
-
-@default_reply
+@slackbot.bot.default_reply
 def default_handler(message):
     message.reply(cambot.HELP_CMDS)
 
 
-@respond_to('list')
+@slackbot.bot.respond_to('list')
 def list_cameras(message):
     cam_list = []
 
@@ -43,13 +40,14 @@ def list_cameras(message):
         elif 'CONNECTED' in camera['state']:
             state = 'online'
 
-        _msg = '{:<26}||{:^10}|| {:<30}'.format(camera['_id'], state, camera['name'])
+        _msg = '{:<26}||{:^10}|| {:<30}'.format(
+            camera['_id'], state, camera['name'])
         cam_list.append(_msg)
 
     message.reply("\n" + "\n".join(cam_list))
 
 
-@respond_to('(.*)door', re.IGNORECASE)
+@slackbot.bot.respond_to('(.*)door', re.IGNORECASE)
 def show_door(message, door_name=None):
     camera_id = None
 
@@ -75,7 +73,7 @@ def show_door(message, door_name=None):
         message.channel.upload_file(door_name, tmp_file)
 
 
-@respond_to('show (.*)', re.IGNORECASE)
+@slackbot.bot.respond_to('show (.*)', re.IGNORECASE)
 def show_camera(message, camera_id):
     nvr = uvsnap.NVR(cambot.NVR_URL, cambot.NVR_API_KEY)
     nvr.get_cameras()
@@ -84,7 +82,7 @@ def show_camera(message, camera_id):
         snapshots = nvr.get_all_snapshots()
         for snapshot in snapshots:
             if snapshot is None:
-                next
+                break
 
             camera_id = snapshot['_id']
 

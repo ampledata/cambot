@@ -6,8 +6,6 @@
 from .constants import (NVR_URL, NVR_API_KEY, FRONT_DOOR_ID,  # NOQA
                         BACK_DOOR_ID, LOG_LEVEL, LOG_FORMAT, HELP_CMDS)
 
-from .app import CambotApp  # NOQA
-
 __author__ = 'Greg Albrecht <oss@undef.net>'
 __copyright__ = 'Copyright 2017 Greg Albrecht'
 __license__ = 'Apache License, Version 2.0'
