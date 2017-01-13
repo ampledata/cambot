@@ -13,17 +13,24 @@ import os
 import re
 import tempfile
 
-from slackbot.bot import respond_to
-from slackbot.bot import listen_to
+from slackbot.bot import respond_to, listen_to, default_reply
 
 import uvsnap
 
 import cambot
 
 
+@default_reply
+def default_handler(message):
+    message.reply(cambot.HELP_CMDS)
+
+
 @respond_to('list')
 def list_cameras(message):
     cam_list = []
+
+    _msg = '{:<26}||{:^10}|| {:<30}'.format('Camera ID', 'Status', 'Name')
+    cam_list.append(_msg)
 
     nvr = uvsnap.NVR(cambot.NVR_URL, cambot.NVR_API_KEY)
     nvr.get_cameras()
@@ -39,7 +46,7 @@ def list_cameras(message):
         _msg = '{:<26}||{:^10}|| {:<30}'.format(camera['_id'], state, camera['name'])
         cam_list.append(_msg)
 
-    message.reply("\n".join(cam_list))
+    message.reply("\n" + "\n".join(cam_list))
 
 
 @respond_to('(.*)door', re.IGNORECASE)
@@ -65,7 +72,7 @@ def show_door(message, door_name=None):
         with open(tmp_file, 'w') as ofd:
             ofd.write(snapshot)
 
-        message.channel.upload_file(tmp_file)
+        message.channel.upload_file(door_name, tmp_file)
 
 
 @respond_to('show (.*)', re.IGNORECASE)
@@ -79,7 +86,7 @@ def show_camera(message, camera_id):
             if snapshot is None:
                 next
 
-            camera_id = snapshots['_id']
+            camera_id = snapshot['_id']
 
             tmp_fd, tmp_file = tempfile.mkstemp()
             os.close(tmp_fd)
@@ -87,7 +94,7 @@ def show_camera(message, camera_id):
             with open(tmp_file, 'w') as ofd:
                 ofd.write(snapshot)
 
-            message.channel.upload_file(tmp_file)
+            message.channel.upload_file(camera_id, tmp_file)
     else:
         tmp_fd, tmp_file = tempfile.mkstemp()
         os.close(tmp_fd)
@@ -97,4 +104,4 @@ def show_camera(message, camera_id):
             with open(tmp_file, 'w') as ofd:
                 ofd.write(snapshot)
 
-            message.channel.upload_file(tmp_file)
+            message.channel.upload_file(camera_id, tmp_file)

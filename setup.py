@@ -20,7 +20,11 @@ setuptools.setup(
     author_email='gba@orionlabs.io',
     zip_safe=False,
     packages=['cambot'],
-    install_requires=['requests >= 2.8.1', 'slackbot', 'flask', 'gunicorn'],
+    install_requires=[
+        'requests >= 2.8.1',
+        'slackbot',
+        'uvsnap'
+    ],
     entry_points={'console_scripts': ['cambot = cambot.cmd:cli']}
 
 )
