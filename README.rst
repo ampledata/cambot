@@ -4,6 +4,8 @@ CamBot - Slack UniFi Video Camera Bot
 Usage
 =====
 
+Run the bot::
+
     export NVR_URL='https://172.17.0.1:7443'
     export NVR_API_KEY='XXXX'
     export SLACKBOT_API_TOKEN='xoxb-XXXX-XXXX'
