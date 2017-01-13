@@ -1,4 +1,4 @@
-# requirements.txt for Cambot.
+# requirements.txt for CamBot.
 # Contains non-essential modules, such as those for linting & syntax checking.
 
 flake8

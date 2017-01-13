@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Constants for Cambot module."""
+"""CamBot Constants."""
 
 import logging
 import os
 
 __author__ = 'Greg Albrecht <oss@undef.net>'
-__copyright__ = 'Copyright 2017 Orion Labs, Inc.'
+__copyright__ = 'Copyright 2017 Greg Albrecht'
 __license__ = 'Apache License, Version 2.0'
 
 LOG_LEVEL = logging.DEBUG

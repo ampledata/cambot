@@ -19,7 +19,7 @@ from slackbot.bot import Bot
 
 
 __author__ = 'Greg Albrecht <oss@undef.net>'
-__copyright__ = 'Copyright 2017 Orion Labs, Inc.'
+__copyright__ = 'Copyright 2017 Greg Albrecht'
 __license__ = 'Apache License, Version 2.0'
 
 

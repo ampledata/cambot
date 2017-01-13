@@ -2,7 +2,7 @@
 #
 # Source:: https://github.com/ampledata/cambot
 # Author:: Greg Albrecht <oss@undef.net>
-# Copyright:: Copyright 2017 Orion Labs, Inc.
+# Copyright:: Copyright 2017 Greg Albrecht
 # License:: Apache License, Version 2.0
 #
 
@@ -44,13 +44,13 @@ nosetests: remember
 	python setup.py nosetests
 
 pep8: remember
-	flake8 --max-complexity 12 --exit-zero cambot/*.py tests/*.py
+	flake8 --max-complexity 12 --exit-zero *.py cambot/*.py tests/*.py
 
 flake8: pep8
 
 lint: remember
 	pylint --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
-		-r n cambot/*.py tests/*.py || exit 0
+		-r n *.py cambot/*.py tests/*.py || exit 0
 
 pylint: lint
 
