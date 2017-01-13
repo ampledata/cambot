@@ -34,7 +34,7 @@ nosetests:
 pep8:
 	flake8
 
-flake8: 
+flake8:
 	flake8 --max-complexity 12 --exit-zero cambot/*.py *.py
 
 lint:

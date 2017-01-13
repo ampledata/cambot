@@ -5,12 +5,12 @@
 
 import os
 
-__author__ = 'Greg Albrecht <gba@orionlabs.io>'
-__copyright__ = 'Copyright 2016 Orion Labs, Inc.'
-__license__ = 'All rights reserved. Do not redistribute.'
+__author__ = 'Greg Albrecht <oss@undef.net>'
+__copyright__ = 'Copyright 2017 Orion Labs, Inc.'
+__license__ = 'Apache License, Version 2.0'
 
 
 NVR_URL = os.environ.get('NVR_URL', 'NVR_URL')
-API_KEY = os.environ.get('API_KEY', 'API_KEY')
+NVR_API_KEY = os.environ.get('API_KEY', 'API_KEY')
 FRONT_DOOR_ID = os.environ.get('FRONT_DOOR_ID', '57e935c0e4b05e057590f4df')
 BACK_DOOR_ID = os.environ.get('BACK_DOOR_ID', '577aa653e4b05e0574376cac')

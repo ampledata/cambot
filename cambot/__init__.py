@@ -3,10 +3,11 @@
 
 """Cambot Package."""
 
-__author__ = 'Greg Albrecht <gba@orionlabs.io>'
-__copyright__ = 'Copyright 2016 Orion Labs, Inc.'
-__license__ = 'All rights reserved. Do not redistribute.'
+from .constants import (NVR_URL, NVR_API_KEY, FRONT_DOOR_ID,  # NOQA
+                        BACK_DOOR_ID)
 
+from .app import CambotApp  # NOQA
 
-from cambot.functions import *
-from cambot.app import CambotApp
+__author__ = 'Greg Albrecht <oss@undef.net>'
+__copyright__ = 'Copyright 2017 Orion Labs, Inc.'
+__license__ = 'Apache License, Version 2.0'
