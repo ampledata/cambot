@@ -1,44 +1,57 @@
-# Makefile for Cambot.
+# Makefile for CamBot.
 #
-# Author:: Greg Albrecht <gba@orionlabs.io>
-# Copyright:: Copyright 2016 Orion Labs, Inc.
-# License:: All rights reserved. Do not redistribute.
+# Source:: https://github.com/ampledata/cambot
+# Author:: Greg Albrecht <oss@undef.net>
+# Copyright:: Copyright 2017 Orion Labs, Inc.
+# License:: Apache License, Version 2.0
 #
 
 
 .DEFAULT_GOAL := all
 
 
-all: install_requirements develop
-
-develop: install_requirements
-	python setup.py develop
-
-install: install_requirements
-	python setup.py install
+all: develop
 
 install_requirements:
-	pip install --upgrade -r requirements.txt
+	pip install -r requirements.txt
+
+develop: remember
+	python setup.py develop
+
+install: remember
+	python setup.py install
 
 uninstall:
 	pip uninstall -y cambot
 
-clean:
-	rm -rf *.egg* build dist *.py[oc] */*.py[co] cover doctest_pypi.cfg \
-		nosetests.xml pylint.log *.egg output.xml flake8.log tests.log \
-		test-result.xml htmlcov fab.log *.deb *.eggs
+reinstall: uninstall install
 
-nosetests:
+remember:
+	@echo
+	@echo "Hello from the Makefile..."
+	@echo "Don't forget to run: 'make install_requirements'"
+	@echo
+
+clean:
+	@rm -rf *.egg* build dist *.py[oc] */*.py[co] cover doctest_pypi.cfg \
+		nosetests.xml pylint.log output.xml flake8.log tests.log \
+		test-result.xml htmlcov fab.log .coverage
+
+publish:
+	python setup.py register sdist upload
+
+nosetests: remember
 	python setup.py nosetests
 
-pep8:
-	flake8
+pep8: remember
+	flake8 --max-complexity 12 --exit-zero cambot/*.py tests/*.py
 
-flake8:
-	flake8 --max-complexity 12 --exit-zero cambot/*.py *.py
+flake8: pep8
 
-lint:
+lint: remember
 	pylint --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
-	-r n cambot/*.py *.py || exit 0
+		-r n cambot/*.py tests/*.py || exit 0
 
-test: lint flake8 nosetests
+pylint: lint
+
+test: lint pep8 nosetests
