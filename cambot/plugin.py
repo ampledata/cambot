@@ -80,19 +80,15 @@ def show_camera(message, camera_id):
 
     if 'all' in camera_id:
         snapshots = nvr.get_all_snapshots()
-        for snapshot in snapshots:
-            if snapshot is None:
-                break
+        for camera_id, snapshot in snapshots.iteritems():
+            if snapshot is not None:
+                tmp_fd, tmp_file = tempfile.mkstemp()
+                os.close(tmp_fd)
 
-            camera_id = snapshot['_id']
+                with open(tmp_file, 'w') as ofd:
+                    ofd.write(snapshot)
 
-            tmp_fd, tmp_file = tempfile.mkstemp()
-            os.close(tmp_fd)
-
-            with open(tmp_file, 'w') as ofd:
-                ofd.write(snapshot)
-
-            message.channel.upload_file(camera_id, tmp_file)
+                message.channel.upload_file(camera_id, tmp_file)
     else:
         tmp_fd, tmp_file = tempfile.mkstemp()
         os.close(tmp_fd)
