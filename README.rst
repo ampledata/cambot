@@ -1,6 +1,13 @@
 CamBot - Slack UniFi Video Camera Bot
 *************************************
 
+.. image:: cambot.jpg
+
+CamBot is a Slack bot for viewing snapshots from a UniFi Video Camera System.
+It utilizes the NVR API interface to query and retrieve stills from cameras.
+
+To start, you'll need to create an API key on the NVR, and a Slack API Token.
+
 Usage
 =====
 
