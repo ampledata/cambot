@@ -103,4 +103,4 @@ def show_camera(message, camera_id):
 @slackbot.bot.respond_to('seppuku', re.IGNORECASE)
 def seppuku(message):
     message.reply('切腹')
-    raise Exception('切腹')
+    raise Exception('Seppuku')
