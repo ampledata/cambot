@@ -99,3 +99,8 @@ def show_camera(message, camera_id):
                 ofd.write(snapshot)
 
             message.channel.upload_file(camera_id, tmp_file)
+
+@slackbot.bot.respond_to('seppuku', re.IGNORECASE)
+def seppuku(message):
+    message.reply('切腹')
+    raise Exception('切腹')
