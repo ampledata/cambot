@@ -12,9 +12,9 @@ import sys
 import setuptools
 
 __title__ = 'cambot'
-__version__ = '1.0.1'
+__version__ = '1.1.0'
 __author__ = 'Greg Albrecht <oss@undef.net>'
-__copyright__ = 'Copyright 2017 Greg Albrecht'
+__copyright__ = 'Copyright 2019 Greg Albrecht'
 __license__ = 'Apache License, Version 2.0'
 
 
